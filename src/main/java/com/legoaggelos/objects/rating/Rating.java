@@ -23,7 +23,11 @@ public class Rating {
         this.rating = rating;
         this.thingRated=thingRated;
     }
-
+    
+    public RatingType getRatingType() {
+        return thingRated;
+    }
+    
     public byte rating() {
         return rating;
     }
@@ -127,3 +131,4 @@ public class Rating {
         return this.thingRated.toString() + " " + this.rating;
     }
 }
+
