@@ -50,6 +50,9 @@ public class CarEvaluator {
     public List<RatedCar> getInOrderOfRating() {
         return cars.stream().sorted(Comparator.comparingDouble(RatedCar::getOverallRating)).toList();
     }
+    public List<RatedCar> getInOrderOfRatingExcludingPower() {
+        return cars.stream().sorted(Comparator.comparingDouble(RatedCar::calculateRatingExcludingPower)).toList();
+    }
     public RatedCar getHighestRating() {
         return getInOrderOfRating().getLast();
     }
