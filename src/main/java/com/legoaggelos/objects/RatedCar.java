@@ -47,14 +47,15 @@ public class RatedCar extends Car {
         final StringBuffer sb = new StringBuffer();
         sb.append(getMake().toString().toLowerCase()).append(" ").append(getModel()).append("\n");
         sb.append(reliabilityRating);
-        sb.append(", ").append(mileageRating);
-        sb.append(", ").append(powerRating);
-        sb.append(", ").append(priceRating);
+        sb.append(", ").append(mileageRating).append("(").append(getMileage()/1000).append("000km").append(")");
+        sb.append(", ").append(powerRating).append("(").append(getHorsePowerPerKilo()).append("hp/kg").append(")");
+        sb.append(", ").append(priceRating).append("(").append(getPriceInEuro()).append("euro").append(")");
         sb.append(", ").append(functionalityRating);
-        sb.append(", ").append(fuelEfficiencyRating);
-        sb.append(", ").append(ageRating);
+        sb.append(", ").append(fuelEfficiencyRating).append("(").append(getlPer100km()).append("l/100km").append(")");
+        sb.append(", ").append(ageRating).append("(").append(ZonedDateTime.now().getYear()-getFirstRegistrationYear()).append("y").append(")");
         sb.append(", ").append(damageRating);
         sb.append("\noverallRating = ").append(overallRating);
         return sb.toString();
     }
 }
+
