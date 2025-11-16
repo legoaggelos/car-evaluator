@@ -2,6 +2,8 @@ package com.legoaggelos.objects;
 
 import com.legoaggelos.objects.rating.Rating;
 
+import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,18 @@ public class RatedCar extends Car {
         return (double) stream.reduce((byte) 0, (a, b) -> (byte) (a + b))/ratings.size();
     }
 
+    public double calculateRatingExcludingPower() {
+        int total = 0;
+        int size = ratings.size()-1;
+        for (var rating : ratings) {
+            if (rating.getRatingType().equals(Rating.RatingType.POWER)) {
+                continue;
+            }
+            total+=rating.rating();
+        }
+        return (double)total/size;
+    }
+
     public double getOverallRating() {
         return overallRating;
     }
@@ -55,7 +69,7 @@ public class RatedCar extends Car {
         sb.append(", ").append(ageRating).append("(").append(ZonedDateTime.now().getYear()-getFirstRegistrationYear()).append("y").append(")");
         sb.append(", ").append(damageRating);
         sb.append("\noverallRating = ").append(overallRating);
+        sb.append("\novr rating excluding power= ").append(calculateRatingExcludingPower());
         return sb.toString();
     }
 }
-
