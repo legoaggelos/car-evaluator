@@ -30,6 +30,8 @@ public class Main {
         }
         System.out.println("Sorted by rating: ");
         printList(evaluator.getInOrderOfRating().reversed());
+        System.out.println("Sorted by rating excluding power: ");
+        printList(evaluator.getInOrderOfRatingExcludingPower().reversed());
         System.out.println();
         System.out.println("Sorted by fuel efficiency: ");
         printList(evaluator.getInOrderOfFuelEfficiency());
